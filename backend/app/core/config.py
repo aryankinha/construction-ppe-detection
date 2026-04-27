@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     HOST: str = "0.0.0.0"
     PORT: int = 8000
 
-    MODEL_PATH: str = "Model/ppe.pt"
+    MODEL_PATH: str = "Model/ppe.onnx"
     DETECTION_CONFIDENCE: float = 0.5
 
     # Comma-separated list of allowed CORS origins; "*" allows all

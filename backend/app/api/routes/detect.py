@@ -60,10 +60,17 @@ async def _decode_upload(file: UploadFile) -> np.ndarray:
     data = await file.read()
     if not data:
         raise HTTPException(status_code=400, detail="Empty upload")
+    if len(data) > 4 * 1024 * 1024:
+        raise HTTPException(status_code=413, detail="Image too large (max 4MB)")
     arr = np.frombuffer(data, dtype=np.uint8)
     img = cv2.imdecode(arr, cv2.IMREAD_COLOR)
     if img is None:
         raise HTTPException(status_code=400, detail="Could not decode image")
+    max_dim = 960
+    h, w = img.shape[:2]
+    if max(h, w) > max_dim:
+        s = max_dim / max(h, w)
+        img = cv2.resize(img, (int(w * s), int(h * s)), interpolation=cv2.INTER_AREA)
     return img
 
 

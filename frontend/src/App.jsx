@@ -11,7 +11,7 @@ import {
 import { Separator } from '@/components/ui/separator'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || ''
-const FRAME_INTERVAL_MS = 500
+const FRAME_INTERVAL_MS = 1500
 
 const VIOLATION_CLASSES = new Set(['NO-Hardhat', 'NO-Mask', 'NO-Safety Vest'])
 const COMPLIANT_CLASSES = new Set(['Hardhat', 'Mask', 'Safety Vest'])
