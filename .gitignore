@@ -179,3 +179,5 @@ cython_debug/
 violation_frames/
 no_hardhat_frame.jpg
 ppe_detection.db
+
+.DS_Store
